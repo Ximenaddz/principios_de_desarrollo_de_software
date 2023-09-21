@@ -1,0 +1,52 @@
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+import javax.swing.event.*;
+
+public class MyPanel extends JPanel {
+    private JButton Ingresar;
+    private JComboBox Categoría;
+    private JComboBox Sección;
+    private JTextField Saldo;
+    private JButton OK;
+
+    public MyPanel() {
+        //construct preComponents
+        String[] CategoríaItems = {"Alimentación", "Servicios", "Compras", "Transporte"};
+        String[] SecciónItems = {"Billetera", "Colchón", "Alcancía"};
+
+        //construct components
+        Ingresar = new JButton ("Ingresar");
+        Categoría = new JComboBox (CategoríaItems);
+        Sección = new JComboBox (SecciónItems);
+        Saldo = new JTextField (5);
+        OK = new JButton ("OK");
+
+        //adjust size and set layout
+        setPreferredSize (new Dimension (667, 366));
+        setLayout (null);
+
+        //add components
+        add (Ingresar);
+        add (Categoría);
+        add (Sección);
+        add (Saldo);
+        add (OK);
+
+        //set component bounds (only needed by Absolute Positioning)
+        Ingresar.setBounds (35, 50, 110, 30);
+        Categoría.setBounds (195, 90, 100, 25);
+        Sección.setBounds (195, 50, 100, 25);
+        Saldo.setBounds (35, 90, 100, 25);
+        OK.setBounds (35, 125, 51, 25);
+    }
+
+
+    public static void main (String[] args) {
+        JFrame frame = new JFrame ("MyPanel");
+        frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
+        frame.getContentPane().add (new MyPanel());
+        frame.pack();
+        frame.setVisible (true);
+    }
+}
